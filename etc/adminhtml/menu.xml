@@ -1,0 +1,7 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tam_BannerSlider::banners_slider" title="TamBanner" translate="title" module="Tam_BannerSlider" sortOrder="20" resource="Tam_BannerSlider::banners_slider"/>
+        <add id="Tam_BannerSlider::all_banners" title="All Banners" translate="title" module="Tam_BannerSlider" sortOrder="10" resource="PHPCuong_BannerSlider::all_banners" parent="Tam_BannerSlider::banners_slider" action="tam_banners_slider/banner/index"/>
+        <add id="Tam_BannerSlider::all_groups" title="All Groups" translate="title" module="Tam_BannerSlider" sortOrder="10" resource="Tam_BannerSlider::all_groups" parent="Tam_BannerSlider::banners_slider" action="tam_banners_slider/group/index"/>
+    </menu>
+</config>

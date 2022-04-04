@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route method="GET" url="/V1/bannersliderCustomr/:id">
+        <service class="Tam\BannerSlider\Api\CustomRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route method="GET" url="/V1/bannersliderCustomr">
+        <service class="Tam\BannerSlider\Api\CustomRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Tam_BannerSlider::banner_read"/>
+        </resources>
+    </route>
+    <route method="POST" url="/V1/bannersliderCustomr">
+        <service class="Tam\BannerSlider\Api\CustomRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Tam_BannerSlider::banner_create"/>
+        </resources>
+    </route>
+    <route method="PUT" url="/V1/bannersliderCustomr">
+        <service class="Tam\BannerSlider\Api\CustomRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Tam_BannerSlider::banner_update"/>
+        </resources>
+    </route>
+    <route method="DELETE" url="/V1/bannersliderCustomr/:id">
+        <service class="Tam\BannerSlider\Api\CustomRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Tam_BannerSlider::banner_delete"/>
+        </resources>
+    </route>
+</routes>

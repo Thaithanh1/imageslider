@@ -1,0 +1,54 @@
+<?php
+
+/** @var \Tam\BannerSlider\Block\Widget\BannerSlider $block */
+$banners = $block->getBanners();
+?>
+<?php if ($banners != ""): ?>
+    <?php if ($banners->getSize()): ?>
+
+        <div class="owl-carousel homes-slider">
+            <?php foreach ($banners as $banner): ?>
+                <div class="item">
+                    <?php if ($banner->getUrl()): ?>
+                        <a href="<?= /* @noEscape */ $banner->getUrl(); ?>"
+                        title="<?= /* @noEscape */ $banner->getName(); ?>">
+
+                        <?php endif; ?>
+                        <img src="<?= /* @noEscape */ $banner->getImageUrl(); ?>"
+                        alt="<?= /* @noEscape */ $banner->getName(); ?>" width="100%" />
+                        <?php if ($banner->getUrl()): ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+
+        <script>
+            require(['jquery', 'jquery/ui', 'slick'], function($) {
+                $(document).ready(function() {
+                    $(".homes-slider").slick({
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                        dots: true,
+                    });
+                    var filtered = false;
+
+                    $('.js-filter').on('click', function() {
+                        if (filtered === false) {
+                            $('.homes-slider').slick('slickFilter', ':even');
+                            $(this).text('Unfilter Slides');
+                            filtered = true;
+                        } else {
+                            $('.homes-slider').slick('slickUnfilter');
+                            $(this).text('Filter Slides');
+                            filtered = false;
+                        }
+                    });
+                });
+            });
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

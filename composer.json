@@ -1,0 +1,20 @@
+{
+    "name": "tam/module-bannerslider",
+    "description": "Slide Module",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [{
+        "name": "Tam",
+        "email": "phanthai01nd@gmail.com"
+    }],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Tam\\BannerSlider\\": ""
+        }
+    }
+}

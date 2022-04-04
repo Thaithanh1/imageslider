@@ -1,0 +1,54 @@
+type Query {
+  BannerSlider(
+    filter: BannerSliderFilterInput @doc(description: "")
+    pageSize: Int = 2 @doc(description: "Số mục hiển thị trên trang")
+    currentPage: Int = 1 @doc(description: "")
+  ): BannerSliderOutput
+    @resolver(class: "\\Tam\\BannerSlider\\Model\\Resolver\\PickUpStores")
+    @doc(description: "")
+  BannerGroup(
+    filter: BannerGroupFilterInput @doc(description: "")
+    pageSize: Int = 2 @doc(description: "Số mục hiển thị trên trang")
+    currentPage: Int = 1 @doc(description: "")
+  ): BannerGroupOutput
+    @resolver(class: "\\Tam\\BannerSlider\\Model\\Resolver\\PickUpStores")
+    @doc(description: "")
+}
+
+input BannerSliderFilterInput {
+  name: FilterTypeInput @doc(description: "")
+  image: FilterTypeInput @doc(description: "")
+  status: FilterTypeInput @doc(description: "")
+  group_id: FilterTypeInput @doc(description: "")
+  or: BannerSliderFilterInput
+}
+
+type BannerSliderOutput {
+  total_count: Int @doc(description: "")
+  items: [BannerSlider] @doc(description: "")
+}
+
+type BannerSlider {
+  name: String @doc(description: "")
+  url: String @doc(description: "")
+  image: String @doc(description: "")
+  status: Float @doc(description: "")
+  store_id: Float @doc(description: "")
+  order: Float @doc(description: "")
+  group_id: Float @doc(description: "")
+  description: String @doc(description: "")
+}
+
+input BannerGroupFilterInput {
+  name: FilterTypeInput @doc(description: "")
+  or: BannerGroupFilterInput
+}
+
+type BannerGroupOutput {
+  total_count: Int @doc(description: "")
+  items: [BannerGroup] @doc(description: "")
+}
+
+type BannerGroup {
+  name: String @doc(description: "")
+}

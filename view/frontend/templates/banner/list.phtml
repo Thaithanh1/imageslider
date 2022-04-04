@@ -1,0 +1,57 @@
+<?php
+
+/** @var \Tam\BannerSlider\Block\Widget\BannerSlider $block */
+$banners = $block->getBanners();
+?>
+<?php if ($banners->getSize()): ?>
+
+    <div class="owl-carousel homes-slider">
+        <?php foreach ($banners as $banner): ?>
+            <div class="item">
+                <?php if ($banner->getUrl()): ?>
+                    <a href="<?= /* @noEscape */ $banner->getUrl(); ?>"
+                    title="<?= /* @noEscape */ $banner->getName(); ?>">
+                    <?php endif; ?>
+                    <img src="<?= /* @noEscape */ $banner->getImageUrl(); ?>"
+                    alt="<?= /* @noEscape */ $banner->getName(); ?>" width="100%" />
+                    <?php if ($banner->getUrl()): ?>
+                    </a>
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+
+    <script>
+        require(['jquery', 'jquery/ui', 'slick'], function($) {
+            $(document).ready(function() {
+                $(".homes-slider").slick({
+                    centerMode: true,
+                    centerPadding: '60px',
+                    slidesToShow: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3500,
+                    responsive: [{
+                            breakpoint: 768,
+                            settings: {
+                                arrows: false,
+                                centerMode: true,
+                                centerPadding: '40px',
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                arrows: false,
+                                centerMode: true,
+                                centerPadding: '40px',
+                                slidesToShow: 1
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
+<?php endif; ?>
